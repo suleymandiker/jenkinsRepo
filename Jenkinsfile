@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
+        stage('Checkout') {
             steps {
-                echo 'Hello Jenkins from Git!'
+                git branch: 'main', url: 'https://github.com/suleymandiker/jenkinsRepo.git'
+            }
+        }
+        stage('Run Python Script') {
+            steps {
+                sh 'python3 main.py'
             }
         }
     }
